@@ -448,24 +448,29 @@ export default function Home() {
   return (
     <div className="min-h-screen" style={{ background: '#e5e9f0' }}>
       {/* Premium Header */}
-      <header className="sticky top-0 z-50" style={{ background: 'linear-gradient(135deg, #f97316, #ec4899, #8b5cf6)', borderBottom: '1px solid rgba(0,0,0,0.1)' }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
-          <div>
-            <h1 className="text-3xl font-black text-white drop-shadow-md">
-              Make My OG
-            </h1>
-            <p className="text-sm text-white/80 font-medium mt-0.5">Free OG Image & Social Card Generator</p>
+      <header style={{ background: 'linear-gradient(135deg, #f97316, #ec4899, #8b5cf6)', borderBottom: '2px solid rgba(0,0,0,0.15)', position: 'sticky', top: 0, zIndex: 50, boxShadow: '0 4px 20px rgba(249,115,22,0.3)' }}>
+        <div style={{ maxWidth: '1536px', margin: '0 auto', padding: '18px 32px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+            <div style={{ width: '42px', height: '42px', borderRadius: '12px', background: 'rgba(255,255,255,0.2)', backdropFilter: 'blur(10px)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '22px' }}>
+              🎨
+            </div>
+            <div>
+              <h1 style={{ fontSize: '24px', fontWeight: 900, color: '#ffffff', letterSpacing: '-0.02em', margin: 0, textShadow: '0 2px 4px rgba(0,0,0,0.2)' }}>
+                Make My OG
+              </h1>
+              <p style={{ fontSize: '12px', color: 'rgba(255,255,255,0.8)', margin: 0, fontWeight: 500 }}>Free OG Image & Social Card Generator</p>
+            </div>
           </div>
-          <div className="hidden sm:flex items-center gap-1 px-3 py-1.5 rounded-full" style={{ background: 'rgba(255,255,255,0.2)', backdropFilter: 'blur(10px)' }}>
-            <span className="inline-block w-2 h-2 rounded-full bg-green-400"></span>
-            <span className="text-xs font-semibold text-white">100% Client-side · No server processing</span>
+          <div className="hidden sm:flex" style={{ alignItems: 'center', gap: '8px', background: 'rgba(255,255,255,0.2)', backdropFilter: 'blur(10px)', padding: '8px 16px', borderRadius: '100px', border: '1px solid rgba(255,255,255,0.25)' }}>
+            <span style={{ display: 'inline-block', width: '8px', height: '8px', borderRadius: '50%', background: '#4ade80' }}></span>
+            <span style={{ fontSize: '12px', fontWeight: 600, color: '#ffffff' }}>100% Client-side · No server processing</span>
           </div>
         </div>
       </header>
 
-      <main className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <main style={{ maxWidth: '1536px', margin: '0 auto', padding: '28px 32px' }}>
         {/* Three-column premium layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 auto-rows-min">
+        <div className="grid grid-cols-1 lg:grid-cols-12 auto-rows-min" style={{ gap: '24px' }}>
           {/* LEFT PANEL - CONTROLS (3 cols on desktop) */}
           <div className="lg:col-span-3 space-y-5 max-h-[calc(100vh-180px)] overflow-y-auto pr-2">
             {/* Templates Section */}
@@ -953,13 +958,10 @@ export default function Home() {
 
               <button
                 onClick={copyCanvasAsBase64}
-                className={`w-full font-bold py-3 px-4 rounded-xl transition-all duration-200 border-2 flex items-center justify-center gap-2 ${
-                  copiedCanvasUrl
-                    ? 'bg-green-50 border-green-200 text-green-700'
-                    : 'bg-slate-50 border-slate-200 text-slate-700 hover:border-blue-300'
-                }`}
+                className="w-full flex items-center justify-center gap-2"
+                style={{ fontWeight: 700, padding: '12px 16px', borderRadius: '12px', border: '2px solid ' + (copiedCanvasUrl ? '#86efac' : '#94a3b8'), background: copiedCanvasUrl ? '#f0fdf4' : '#f8fafc', color: copiedCanvasUrl ? '#15803d' : '#334155', cursor: 'pointer', fontSize: '14px' }}
               >
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg style={{ width: '16px', height: '16px' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
                 </svg>
                 {copiedCanvasUrl ? 'Copied Base64!' : 'Copy as Base64'}
@@ -967,7 +969,8 @@ export default function Home() {
 
               <button
                 onClick={() => setShowMetaTags(!showMetaTags)}
-                className="w-full font-bold py-3 px-4 rounded-xl transition-all duration-200 border-2 bg-slate-50 border-slate-200 text-slate-700 hover:border-blue-300 flex items-center justify-center gap-2"
+                className="w-full flex items-center justify-center gap-2"
+                style={{ fontWeight: 700, padding: '12px 16px', borderRadius: '12px', border: '2px solid #94a3b8', background: '#f8fafc', color: '#334155', cursor: 'pointer', fontSize: '14px' }}
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20H7a2 2 0 01-2-2V6a2 2 0 012-2h3" />
@@ -1063,13 +1066,10 @@ export default function Home() {
                 </div>
                 <button
                   onClick={copyMetaTags}
-                  className={`w-full font-bold py-2 px-3 rounded-lg transition-all duration-200 text-xs flex items-center justify-center gap-2 ${
-                    copiedMetaTags
-                      ? 'bg-green-50 text-green-700 border border-green-200'
-                      : 'bg-slate-100 text-slate-700 border border-slate-200 hover:border-blue-300'
-                  }`}
+                  className="w-full flex items-center justify-center gap-2"
+                  style={{ fontWeight: 700, padding: '10px 12px', borderRadius: '8px', fontSize: '12px', border: '1px solid ' + (copiedMetaTags ? '#86efac' : '#94a3b8'), background: copiedMetaTags ? '#f0fdf4' : '#f1f5f9', color: copiedMetaTags ? '#15803d' : '#475569', cursor: 'pointer' }}
                 >
-                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg style={{ width: '14px', height: '14px' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
                   </svg>
                   {copiedMetaTags ? 'Copied!' : 'Copy Meta Tags'}
