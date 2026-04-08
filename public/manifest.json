@@ -1,0 +1,26 @@
+{
+  "name": "Make My OG - Free OG Image & Social Card Generator",
+  "short_name": "Make My OG",
+  "description": "Create stunning OG images and social cards instantly with our free visual generator. No design skills needed.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#ffffff",
+  "theme_color": "#f97316",
+  "categories": ["productivity", "graphics", "utilities"],
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64",
+      "type": "image/x-icon"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/og-image.png",
+      "sizes": "1200x630",
+      "type": "image/png"
+    }
+  ]
+}
