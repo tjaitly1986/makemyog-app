@@ -469,10 +469,10 @@ export default function Home() {
           {/* LEFT PANEL - CONTROLS (3 cols on desktop) */}
           <div className="lg:col-span-3 space-y-5 max-h-[calc(100vh-180px)] overflow-y-auto pr-2">
             {/* Templates Section */}
-            <div className="og-card">
+            <div style={{ background: '#ffffff', borderRadius: '16px', boxShadow: '0 4px 24px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.06)', border: '1px solid #94a3b8', padding: '20px' }}>
               <div className="flex items-center gap-2 mb-4">
-                <div className="w-1 h-5 rounded-full bg-gradient-to-b from-orange-500 to-pink-500"></div>
-                <h2 className="text-xs font-bold uppercase tracking-widest text-slate-600">Templates</h2>
+                <div style={{ width: '4px', height: '20px', borderRadius: '4px', background: 'linear-gradient(to bottom, #f97316, #ec4899)' }}></div>
+                <h2 style={{ fontSize: '11px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#475569' }}>Templates</h2>
               </div>
               <div className="grid grid-cols-4 gap-2">
                 {TEMPLATES.map((t) => (
@@ -501,52 +501,52 @@ export default function Home() {
             </div>
 
             {/* Text Section */}
-            <div className="og-card">
+            <div style={{ background: '#ffffff', borderRadius: '16px', boxShadow: '0 4px 24px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.06)', border: '1px solid #94a3b8', padding: '20px' }}>
               <div className="flex items-center gap-2 mb-4">
-                <div className="w-1 h-5 rounded-full bg-gradient-to-b from-blue-500 to-purple-500"></div>
-                <h2 className="text-xs font-bold uppercase tracking-widest text-slate-600">Text</h2>
+                <div style={{ width: '4px', height: '20px', borderRadius: '4px', background: 'linear-gradient(to bottom, #3b82f6, #8b5cf6)' }}></div>
+                <h2 style={{ fontSize: '11px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#475569' }}>Text</h2>
               </div>
               <div className="space-y-4">
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 mb-2 uppercase tracking-wide">Title</label>
+                  <label style={{ display: 'block', fontSize: '11px', fontWeight: 700, color: '#475569', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Title</label>
                   <input
                     type="text"
                     value={template.titleText}
                     onChange={(e) => setTemplate({ ...template, titleText: e.target.value })}
-                    className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-900 placeholder-slate-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                    className="w-full rounded-lg" style={{ background: '#f8fafc', border: '1px solid #94a3b8', padding: '10px 12px', fontSize: '13px', fontWeight: 500, color: '#0f172a', outline: 'none' }}
                     placeholder="Your headline"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 mb-2 uppercase tracking-wide">Subtitle</label>
+                  <label style={{ display: 'block', fontSize: '11px', fontWeight: 700, color: '#475569', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Subtitle</label>
                   <input
                     type="text"
                     value={template.subtitleText}
                     onChange={(e) => setTemplate({ ...template, subtitleText: e.target.value })}
-                    className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-900 placeholder-slate-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                    className="w-full rounded-lg" style={{ background: '#f8fafc', border: '1px solid #94a3b8', padding: '10px 12px', fontSize: '13px', fontWeight: 500, color: '#0f172a', outline: 'none' }}
                     placeholder="Subheading or tagline"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 mb-2 uppercase tracking-wide">Author / Site</label>
+                  <label style={{ display: 'block', fontSize: '11px', fontWeight: 700, color: '#475569', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Author / Site</label>
                   <input
                     type="text"
                     value={template.authorText}
                     onChange={(e) => setTemplate({ ...template, authorText: e.target.value })}
-                    className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-900 placeholder-slate-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                    className="w-full rounded-lg" style={{ background: '#f8fafc', border: '1px solid #94a3b8', padding: '10px 12px', fontSize: '13px', fontWeight: 500, color: '#0f172a', outline: 'none' }}
                     placeholder="yoursite.com"
                   />
                 </div>
 
                 <div className="grid grid-cols-2 gap-3">
                   <div>
-                    <label className="block text-xs font-semibold text-slate-700 mb-2 uppercase tracking-wide">Font</label>
+                    <label style={{ display: 'block', fontSize: '11px', fontWeight: 700, color: '#475569', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Font</label>
                     <select
                       value={template.fontFamily}
                       onChange={(e) => setTemplate({ ...template, fontFamily: e.target.value })}
-                      className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-900 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                      className="w-full rounded-lg" style={{ background: '#f8fafc', border: '1px solid #94a3b8', padding: '10px 12px', fontSize: '13px', fontWeight: 500, color: '#0f172a', outline: 'none' }}
                     >
                       {FONT_FAMILIES.map((f) => (
                         <option key={f.value} value={f.value}>{f.name}</option>
@@ -554,11 +554,11 @@ export default function Home() {
                     </select>
                   </div>
                   <div>
-                    <label className="block text-xs font-semibold text-slate-700 mb-2 uppercase tracking-wide">Align</label>
+                    <label style={{ display: 'block', fontSize: '11px', fontWeight: 700, color: '#475569', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Align</label>
                     <select
                       value={template.alignment}
                       onChange={(e) => setTemplate({ ...template, alignment: e.target.value as any })}
-                      className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-900 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                      className="w-full rounded-lg" style={{ background: '#f8fafc', border: '1px solid #94a3b8', padding: '10px 12px', fontSize: '13px', fontWeight: 500, color: '#0f172a', outline: 'none' }}
                     >
                       <option value="left">Left</option>
                       <option value="center">Center</option>
@@ -569,8 +569,8 @@ export default function Home() {
 
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <label className="text-xs font-semibold text-slate-700 uppercase tracking-wide">Title Size</label>
-                    <span className="text-xs font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded-md">{template.titleSize}px</span>
+                    <label style={{ fontSize: '11px', fontWeight: 700, color: '#475569', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Title Size</label>
+                    <span style={{ fontSize: '11px', fontWeight: 700, color: '#2563eb', background: '#eff6ff', padding: '2px 8px', borderRadius: '6px' }}>{template.titleSize}px</span>
                   </div>
                   <input
                     type="range"
@@ -584,8 +584,8 @@ export default function Home() {
 
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <label className="text-xs font-semibold text-slate-700 uppercase tracking-wide">Subtitle Size</label>
-                    <span className="text-xs font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded-md">{template.subtitleSize}px</span>
+                    <label style={{ fontSize: '11px', fontWeight: 700, color: '#475569', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Subtitle Size</label>
+                    <span style={{ fontSize: '11px', fontWeight: 700, color: '#2563eb', background: '#eff6ff', padding: '2px 8px', borderRadius: '6px' }}>{template.subtitleSize}px</span>
                   </div>
                   <input
                     type="range"
@@ -598,9 +598,9 @@ export default function Home() {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 mb-2 uppercase tracking-wide">Text Color</label>
+                  <label style={{ display: 'block', fontSize: '11px', fontWeight: 700, color: '#475569', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Text Color</label>
                   <div className="flex items-center gap-2">
-                    <div className="relative h-10 w-10 rounded-lg border-2 border-slate-200 overflow-hidden">
+                    <div style={{ position: 'relative', height: '40px', width: '40px', borderRadius: '8px', border: '2px solid #94a3b8', overflow: 'hidden' }}>
                       <input
                         type="color"
                         value={template.textColor}
@@ -612,12 +612,12 @@ export default function Home() {
                       type="text"
                       value={template.textColor}
                       onChange={(e) => setTemplate({ ...template, textColor: e.target.value })}
-                      className="flex-1 bg-slate-50 border border-slate-200 rounded-lg px-2.5 py-2 text-xs font-mono text-slate-900 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                      className="flex-1 rounded-lg" style={{ background: '#f8fafc', border: '1px solid #94a3b8', padding: '8px 10px', fontSize: '12px', fontFamily: 'ui-monospace, monospace', color: '#0f172a', outline: 'none' }}
                     />
                   </div>
                 </div>
 
-                <div className="flex items-center gap-3 p-3 bg-slate-50 rounded-lg border border-slate-200">
+                <div className="flex items-center gap-3" style={{ padding: '12px', background: '#f8fafc', borderRadius: '8px', border: '1px solid #94a3b8' }}>
                   <input
                     type="checkbox"
                     id="shadow"
@@ -633,14 +633,14 @@ export default function Home() {
             </div>
 
             {/* Background Section */}
-            <div className="og-card">
+            <div style={{ background: '#ffffff', borderRadius: '16px', boxShadow: '0 4px 24px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.06)', border: '1px solid #94a3b8', padding: '20px' }}>
               <div className="flex items-center gap-2 mb-4">
-                <div className="w-1 h-5 rounded-full bg-gradient-to-b from-purple-500 to-pink-500"></div>
-                <h2 className="text-xs font-bold uppercase tracking-widest text-slate-600">Background</h2>
+                <div style={{ width: '4px', height: '20px', borderRadius: '4px', background: 'linear-gradient(to bottom, #8b5cf6, #ec4899)' }}></div>
+                <h2 style={{ fontSize: '11px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#475569' }}>Background</h2>
               </div>
               <div className="space-y-4">
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 mb-2 uppercase tracking-wide">Type</label>
+                  <label style={{ display: 'block', fontSize: '11px', fontWeight: 700, color: '#475569', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Type</label>
                   <select
                     value={template.bg.type}
                     onChange={(e) =>
@@ -649,7 +649,7 @@ export default function Home() {
                         bg: { ...template.bg, type: e.target.value as any },
                       })
                     }
-                    className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-900 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                    className="w-full rounded-lg" style={{ background: '#f8fafc', border: '1px solid #94a3b8', padding: '10px 12px', fontSize: '13px', fontWeight: 500, color: '#0f172a', outline: 'none' }}
                   >
                     <option value="solid">Solid Color</option>
                     <option value="gradient">Gradient</option>
@@ -658,8 +658,8 @@ export default function Home() {
 
                 {template.bg.type === 'solid' && (
                   <div>
-                    <label className="block text-xs font-semibold text-slate-700 mb-2 uppercase tracking-wide">Color</label>
-                    <div className="h-12 rounded-lg border-2 border-slate-200 overflow-hidden">
+                    <label style={{ display: 'block', fontSize: '11px', fontWeight: 700, color: '#475569', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Color</label>
+                    <div style={{ height: '48px', borderRadius: '8px', border: '2px solid #94a3b8', overflow: 'hidden' }}>
                       <input
                         type="color"
                         value={template.bg.color1 || '#ffffff'}
@@ -679,8 +679,8 @@ export default function Home() {
                   <>
                     <div className="grid grid-cols-2 gap-3">
                       <div>
-                        <label className="block text-xs font-semibold text-slate-700 mb-2 uppercase tracking-wide">Color 1</label>
-                        <div className="h-10 rounded-lg border-2 border-slate-200 overflow-hidden">
+                        <label style={{ display: 'block', fontSize: '11px', fontWeight: 700, color: '#475569', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Color 1</label>
+                        <div style={{ height: '40px', borderRadius: '8px', border: '2px solid #94a3b8', overflow: 'hidden' }}>
                           <input
                             type="color"
                             value={template.bg.color1 || '#667eea'}
@@ -695,8 +695,8 @@ export default function Home() {
                         </div>
                       </div>
                       <div>
-                        <label className="block text-xs font-semibold text-slate-700 mb-2 uppercase tracking-wide">Color 2</label>
-                        <div className="h-10 rounded-lg border-2 border-slate-200 overflow-hidden">
+                        <label style={{ display: 'block', fontSize: '11px', fontWeight: 700, color: '#475569', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Color 2</label>
+                        <div style={{ height: '40px', borderRadius: '8px', border: '2px solid #94a3b8', overflow: 'hidden' }}>
                           <input
                             type="color"
                             value={template.bg.color2 || '#764ba2'}
@@ -713,7 +713,7 @@ export default function Home() {
                     </div>
 
                     <div>
-                      <label className="block text-xs font-semibold text-slate-700 mb-2 uppercase tracking-wide">Direction</label>
+                      <label style={{ display: 'block', fontSize: '11px', fontWeight: 700, color: '#475569', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Direction</label>
                       <select
                         value={template.bg.direction || 'to-right'}
                         onChange={(e) =>
@@ -722,7 +722,7 @@ export default function Home() {
                             bg: { ...template.bg, direction: e.target.value },
                           })
                         }
-                        className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-900 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                        className="w-full rounded-lg" style={{ background: '#f8fafc', border: '1px solid #94a3b8', padding: '10px 12px', fontSize: '13px', fontWeight: 500, color: '#0f172a', outline: 'none' }}
                       >
                         <option value="to-right">Right</option>
                         <option value="to-bottom">Bottom</option>
@@ -732,7 +732,7 @@ export default function Home() {
                     </div>
 
                     <div>
-                      <label className="block text-xs font-semibold text-slate-700 mb-2 uppercase tracking-wide">Presets</label>
+                      <label style={{ display: 'block', fontSize: '11px', fontWeight: 700, color: '#475569', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Presets</label>
                       <div className="grid grid-cols-6 gap-2">
                         {GRADIENT_PRESETS.map((preset) => (
                           <button
@@ -747,8 +747,8 @@ export default function Home() {
                                 },
                               })
                             }
-                            className="h-9 rounded-lg border-2 border-slate-200 hover:border-slate-400 hover:shadow-md transition-all duration-200"
                             style={{
+                              height: '36px', borderRadius: '8px', border: '2px solid #94a3b8', cursor: 'pointer',
                               background: `linear-gradient(135deg, ${preset.color1}, ${preset.color2})`,
                             }}
                             title={preset.name}
@@ -760,11 +760,11 @@ export default function Home() {
                 )}
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 mb-2 uppercase tracking-wide">Pattern</label>
+                  <label style={{ display: 'block', fontSize: '11px', fontWeight: 700, color: '#475569', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Pattern</label>
                   <select
                     value={template.pattern}
                     onChange={(e) => setTemplate({ ...template, pattern: e.target.value as any })}
-                    className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-900 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                    className="w-full rounded-lg" style={{ background: '#f8fafc', border: '1px solid #94a3b8', padding: '10px 12px', fontSize: '13px', fontWeight: 500, color: '#0f172a', outline: 'none' }}
                   >
                     <option value="none">None</option>
                     <option value="dots">Dots</option>
@@ -774,8 +774,8 @@ export default function Home() {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 mb-2 uppercase tracking-wide">Background Image</label>
-                  <label className="block p-3 border-2 border-dashed border-slate-300 rounded-lg text-center cursor-pointer hover:border-blue-500 hover:bg-blue-50 transition-colors">
+                  <label style={{ display: 'block', fontSize: '11px', fontWeight: 700, color: '#475569', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Background Image</label>
+                  <label style={{ display: 'block', padding: '12px', border: '2px dashed #94a3b8', borderRadius: '8px', textAlign: 'center', cursor: 'pointer' }}>
                     <input
                       ref={fileInputRef}
                       type="file"
@@ -783,7 +783,7 @@ export default function Home() {
                       onChange={handleBackgroundImageUpload}
                       className="hidden"
                     />
-                    <div className="text-xs font-semibold text-slate-600">
+                    <div style={{ fontSize: '12px', fontWeight: 600, color: '#475569' }}>
                       {backgroundImage ? 'Change Image' : 'Click to upload'}
                     </div>
                   </label>
@@ -792,8 +792,8 @@ export default function Home() {
                     <div className="mt-3 space-y-3">
                       <div>
                         <div className="flex items-center justify-between mb-2">
-                          <label className="text-xs font-semibold text-slate-700 uppercase tracking-wide">Blur</label>
-                          <span className="text-xs font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded-md">{imageBlur}px</span>
+                          <label style={{ fontSize: '11px', fontWeight: 700, color: '#475569', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Blur</label>
+                          <span style={{ fontSize: '11px', fontWeight: 700, color: '#2563eb', background: '#eff6ff', padding: '2px 8px', borderRadius: '6px' }}>{imageBlur}px</span>
                         </div>
                         <input
                           type="range"
@@ -806,8 +806,8 @@ export default function Home() {
                       </div>
                       <div>
                         <div className="flex items-center justify-between mb-2">
-                          <label className="text-xs font-semibold text-slate-700 uppercase tracking-wide">Opacity</label>
-                          <span className="text-xs font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded-md">{imageOpacity}%</span>
+                          <label style={{ fontSize: '11px', fontWeight: 700, color: '#475569', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Opacity</label>
+                          <span style={{ fontSize: '11px', fontWeight: 700, color: '#2563eb', background: '#eff6ff', padding: '2px 8px', borderRadius: '6px' }}>{imageOpacity}%</span>
                         </div>
                         <input
                           type="range"
@@ -825,13 +825,13 @@ export default function Home() {
             </div>
 
             {/* Logo Section */}
-            <div className="og-card">
+            <div style={{ background: '#ffffff', borderRadius: '16px', boxShadow: '0 4px 24px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.06)', border: '1px solid #94a3b8', padding: '20px' }}>
               <div className="flex items-center gap-2 mb-4">
-                <div className="w-1 h-5 rounded-full bg-gradient-to-b from-indigo-500 to-blue-500"></div>
-                <h2 className="text-xs font-bold uppercase tracking-widest text-slate-600">Logo</h2>
+                <div style={{ width: '4px', height: '20px', borderRadius: '4px', background: 'linear-gradient(to bottom, #6366f1, #3b82f6)' }}></div>
+                <h2 style={{ fontSize: '11px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#475569' }}>Logo</h2>
               </div>
               <div className="space-y-4">
-                <label className="block p-3 border-2 border-dashed border-slate-300 rounded-lg text-center cursor-pointer hover:border-blue-500 hover:bg-blue-50 transition-colors">
+                <label style={{ display: 'block', padding: '12px', border: '2px dashed #94a3b8', borderRadius: '8px', textAlign: 'center', cursor: 'pointer' }}>
                   <input
                     ref={logoInputRef}
                     type="file"
@@ -839,7 +839,7 @@ export default function Home() {
                     onChange={handleLogoUpload}
                     className="hidden"
                   />
-                  <div className="text-xs font-semibold text-slate-600">
+                  <div style={{ fontSize: '12px', fontWeight: 600, color: '#475569' }}>
                     {logoImage ? 'Change Logo' : 'Click to upload'}
                   </div>
                 </label>
@@ -847,7 +847,7 @@ export default function Home() {
                 {logoImage && (
                   <>
                     <div>
-                      <label className="block text-xs font-semibold text-slate-700 mb-2 uppercase tracking-wide">Position</label>
+                      <label style={{ display: 'block', fontSize: '11px', fontWeight: 700, color: '#475569', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Position</label>
                       <div className="grid grid-cols-2 gap-2">
                         {(['top-left', 'top-right', 'bottom-left', 'bottom-right'] as const).map((pos) => (
                           <button
@@ -867,8 +867,8 @@ export default function Home() {
 
                     <div>
                       <div className="flex items-center justify-between mb-2">
-                        <label className="text-xs font-semibold text-slate-700 uppercase tracking-wide">Size</label>
-                        <span className="text-xs font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded-md">{logoSize}px</span>
+                        <label style={{ fontSize: '11px', fontWeight: 700, color: '#475569', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Size</label>
+                        <span style={{ fontSize: '11px', fontWeight: 700, color: '#2563eb', background: '#eff6ff', padding: '2px 8px', borderRadius: '6px' }}>{logoSize}px</span>
                       </div>
                       <input
                         type="range"
@@ -897,7 +897,7 @@ export default function Home() {
 
           {/* CENTER PANEL - CANVAS PREVIEW (6 cols on desktop) */}
           <div className="lg:col-span-6 flex flex-col items-center justify-start">
-            <div className="w-full og-card-flush" style={{ boxShadow: '0 10px 40px rgba(0,0,0,0.12)' }}>
+            <div className="w-full" style={{ background: '#ffffff', borderRadius: '16px', boxShadow: '0 10px 40px rgba(0,0,0,0.15)', border: '1px solid #94a3b8', overflow: 'hidden' }}>
               <div className="aspect-video bg-gradient-to-br from-slate-100 to-slate-200 flex items-center justify-center p-6">
                 <canvas
                   ref={canvasRef}
@@ -936,10 +936,10 @@ export default function Home() {
                 </button>
               </div>
 
-              <div className="bg-white rounded-xl p-4 border border-slate-300">
+              <div style={{ background: '#ffffff', borderRadius: '12px', padding: '16px', border: '1px solid #94a3b8' }}>
                 <div className="flex items-center justify-between mb-2">
-                  <label className="text-xs font-semibold text-slate-700 uppercase tracking-wide">JPEG Quality</label>
-                  <span className="text-xs font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded-md">{jpegQuality}%</span>
+                  <label style={{ fontSize: '11px', fontWeight: 700, color: '#475569', textTransform: 'uppercase', letterSpacing: '0.05em' }}>JPEG Quality</label>
+                  <span style={{ fontSize: '11px', fontWeight: 700, color: '#2563eb', background: '#eff6ff', padding: '2px 8px', borderRadius: '6px' }}>{jpegQuality}%</span>
                 </div>
                 <input
                   type="range"
@@ -980,24 +980,24 @@ export default function Home() {
 
           {/* RIGHT PANEL - SOCIAL PREVIEWS (3 cols on desktop) */}
           <div className="lg:col-span-3 space-y-5 max-h-[calc(100vh-180px)] overflow-y-auto pl-2">
-            <div className="og-card">
+            <div style={{ background: '#ffffff', borderRadius: '16px', boxShadow: '0 4px 24px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.06)', border: '1px solid #94a3b8', padding: '20px' }}>
               <div className="flex items-center gap-2 mb-4">
-                <div className="w-1 h-5 rounded-full bg-gradient-to-b from-green-500 to-emerald-500"></div>
-                <h2 className="text-xs font-bold uppercase tracking-widest text-slate-600">Page Info</h2>
+                <div style={{ width: '4px', height: '20px', borderRadius: '4px', background: 'linear-gradient(to bottom, #22c55e, #10b981)' }}></div>
+                <h2 style={{ fontSize: '11px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#475569' }}>Page Info</h2>
               </div>
               <div className="space-y-3">
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 mb-2 uppercase tracking-wide">Title</label>
+                  <label style={{ display: 'block', fontSize: '11px', fontWeight: 700, color: '#475569', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Title</label>
                   <input
                     type="text"
                     value={pageTitle}
                     onChange={(e) => setPageTitle(e.target.value)}
-                    className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-900 placeholder-slate-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                    className="w-full rounded-lg" style={{ background: '#f8fafc', border: '1px solid #94a3b8', padding: '10px 12px', fontSize: '13px', fontWeight: 500, color: '#0f172a', outline: 'none' }}
                     placeholder="Page title"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 mb-2 uppercase tracking-wide">Description</label>
+                  <label style={{ display: 'block', fontSize: '11px', fontWeight: 700, color: '#475569', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Description</label>
                   <textarea
                     value={pageDescription}
                     onChange={(e) => setPageDescription(e.target.value)}
@@ -1007,7 +1007,7 @@ export default function Home() {
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 mb-2 uppercase tracking-wide">URL</label>
+                  <label style={{ display: 'block', fontSize: '11px', fontWeight: 700, color: '#475569', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>URL</label>
                   <input
                     type="text"
                     value={pageUrl}
@@ -1019,9 +1019,9 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="og-card-flush">
-              <div className="p-4 border-b border-slate-300">
-                <h3 className="text-xs font-bold uppercase tracking-widest text-slate-600">Twitter Preview</h3>
+            <div style={{ background: '#ffffff', borderRadius: '16px', boxShadow: '0 4px 24px rgba(0,0,0,0.08)', border: '1px solid #94a3b8', overflow: 'hidden' }}>
+              <div style={{ padding: '16px', borderBottom: '1px solid #94a3b8' }}>
+                <h3 style={{ fontSize: '11px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#475569' }}>Twitter Preview</h3>
               </div>
               <div className="bg-slate-950 text-white p-4 space-y-2 text-xs">
                 <div className="text-slate-500">twitter.com</div>
@@ -1034,9 +1034,9 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="og-card-flush">
-              <div className="p-4 border-b border-slate-300">
-                <h3 className="text-xs font-bold uppercase tracking-widest text-slate-600">Facebook Preview</h3>
+            <div style={{ background: '#ffffff', borderRadius: '16px', boxShadow: '0 4px 24px rgba(0,0,0,0.08)', border: '1px solid #94a3b8', overflow: 'hidden' }}>
+              <div style={{ padding: '16px', borderBottom: '1px solid #94a3b8' }}>
+                <h3 style={{ fontSize: '11px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#475569' }}>Facebook Preview</h3>
               </div>
               <div className="bg-white border-t border-slate-200">
                 <div className="bg-slate-100 aspect-video flex items-center justify-center text-slate-500 text-xs font-medium">
@@ -1051,10 +1051,10 @@ export default function Home() {
             </div>
 
             {showMetaTags && (
-              <div className="og-card">
+              <div style={{ background: '#ffffff', borderRadius: '16px', boxShadow: '0 4px 24px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.06)', border: '1px solid #94a3b8', padding: '20px' }}>
                 <div className="flex items-center gap-2 mb-4">
-                  <div className="w-1 h-5 rounded-full bg-gradient-to-b from-slate-500 to-slate-700"></div>
-                  <h2 className="text-xs font-bold uppercase tracking-widest text-slate-600">Meta Tags Code</h2>
+                  <div style={{ width: '4px', height: '20px', borderRadius: '4px', background: 'linear-gradient(to bottom, #64748b, #334155)' }}></div>
+                  <h2 style={{ fontSize: '11px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#475569' }}>Meta Tags Code</h2>
                 </div>
                 <div className="bg-slate-950 rounded-xl p-4 overflow-auto max-h-64 mb-3">
                   <pre className="text-xs text-slate-300 font-mono whitespace-pre-wrap break-words">
@@ -1080,9 +1080,9 @@ export default function Home() {
         </div>
       </main>
 
-      <footer className="border-t border-slate-200 bg-white/50 backdrop-blur-xl mt-12">
+      <footer style={{ borderTop: '1px solid #94a3b8', background: 'rgba(255,255,255,0.7)', marginTop: '48px' }}>
         <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center">
-          <p className="text-xs text-slate-600 font-medium">
+          <p style={{ fontSize: '12px', color: '#475569', fontWeight: 500 }}>
             Made with Canvas API • Your designs never leave your browser
           </p>
         </div>
