@@ -446,103 +446,119 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
-      {/* Header */}
-      <div className="bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 text-white sticky top-0 z-50 shadow-lg">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex items-center justify-between">
-            <div>
-              <h1 className="text-2xl sm:text-3xl font-bold">Make My OG</h1>
-              <p className="text-sm sm:text-base text-white/80">Free OG Image & Social Card Generator</p>
-            </div>
-            <div className="text-right text-xs sm:text-sm">
-              <p className="text-white/80">100% Client-side</p>
-              <p className="text-white/80">No server processing</p>
-              <p className="text-white/80">Your designs stay private</p>
-            </div>
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-50">
+      {/* Premium Header */}
+      <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/80 backdrop-blur-xl">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+          <div>
+            <h1 className="text-3xl font-black bg-gradient-to-r from-orange-600 via-pink-600 to-purple-600 bg-clip-text text-transparent drop-shadow-sm">
+              Make My OG
+            </h1>
+            <p className="text-sm text-slate-600 font-medium mt-0.5">Free OG Image & Social Card Generator</p>
+          </div>
+          <div className="hidden sm:flex items-center gap-1 px-3 py-1.5 rounded-full bg-gradient-to-r from-blue-50 to-slate-50 border border-slate-200">
+            <span className="inline-block w-2 h-2 rounded-full bg-green-500"></span>
+            <span className="text-xs font-semibold text-slate-700">100% Client-side · No server processing</span>
           </div>
         </div>
-      </div>
+      </header>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {/* Left Panel - Controls */}
-          <div className="lg:col-span-1 space-y-6">
-            {/* Templates */}
-            <div className="bg-white rounded-xl shadow-md p-4">
-              <h3 className="font-bold text-lg mb-3 text-gray-900">Templates</h3>
-              <div className="grid grid-cols-2 gap-2">
+      <main className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Three-column premium layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 auto-rows-min">
+          {/* LEFT PANEL - CONTROLS (3 cols on desktop) */}
+          <div className="lg:col-span-3 space-y-5 max-h-[calc(100vh-180px)] overflow-y-auto pr-2">
+            {/* Templates Section */}
+            <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-5">
+              <div className="flex items-center gap-2 mb-4">
+                <div className="w-1 h-5 rounded-full bg-gradient-to-b from-orange-500 to-pink-500"></div>
+                <h2 className="text-xs font-bold uppercase tracking-widest text-slate-600">Templates</h2>
+              </div>
+              <div className="grid grid-cols-4 gap-2">
                 {TEMPLATES.map((t) => (
                   <button
                     key={t.id}
                     onClick={() => setTemplate(t)}
-                    className={`p-2 rounded-lg text-sm font-medium transition ${
+                    className={`relative group rounded-lg overflow-hidden transition-all duration-200 h-12 ${
                       template.id === t.id
-                        ? 'bg-gradient-to-r from-orange-500 to-pink-500 text-white shadow-md'
-                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                        ? 'ring-2 ring-blue-500 ring-offset-2'
+                        : 'hover:shadow-md'
                     }`}
                   >
-                    {t.name}
+                    <div
+                      className="absolute inset-0"
+                      style={{
+                        background: t.bg.type === 'gradient'
+                          ? `linear-gradient(135deg, ${t.bg.color1}, ${t.bg.color2})`
+                          : t.bg.color1,
+                      }}
+                    />
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors" />
+                    <span className="relative text-xs font-bold text-white mix-blend-overlay drop-shadow-lg">{t.name.split(' ')[0]}</span>
                   </button>
                 ))}
               </div>
             </div>
 
-            {/* Text Controls */}
-            <div className="bg-white rounded-xl shadow-md p-4">
-              <h3 className="font-bold text-lg mb-3 text-gray-900">Text</h3>
-              <div className="space-y-3">
+            {/* Text Section */}
+            <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-5">
+              <div className="flex items-center gap-2 mb-4">
+                <div className="w-1 h-5 rounded-full bg-gradient-to-b from-blue-500 to-purple-500"></div>
+                <h2 className="text-xs font-bold uppercase tracking-widest text-slate-600">Text</h2>
+              </div>
+              <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Title</label>
+                  <label className="block text-xs font-semibold text-slate-700 mb-2 uppercase tracking-wide">Title</label>
                   <input
                     type="text"
                     value={template.titleText}
                     onChange={(e) => setTemplate({ ...template, titleText: e.target.value })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-900 placeholder-slate-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                    placeholder="Your headline"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Subtitle</label>
+                  <label className="block text-xs font-semibold text-slate-700 mb-2 uppercase tracking-wide">Subtitle</label>
                   <input
                     type="text"
                     value={template.subtitleText}
                     onChange={(e) => setTemplate({ ...template, subtitleText: e.target.value })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-900 placeholder-slate-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                    placeholder="Subheading or tagline"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Author / Site</label>
+                  <label className="block text-xs font-semibold text-slate-700 mb-2 uppercase tracking-wide">Author / Site</label>
                   <input
                     type="text"
                     value={template.authorText}
                     onChange={(e) => setTemplate({ ...template, authorText: e.target.value })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-900 placeholder-slate-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                    placeholder="yoursite.com"
                   />
                 </div>
 
-                <div className="grid grid-cols-2 gap-2">
+                <div className="grid grid-cols-2 gap-3">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Font Family</label>
+                    <label className="block text-xs font-semibold text-slate-700 mb-2 uppercase tracking-wide">Font</label>
                     <select
                       value={template.fontFamily}
                       onChange={(e) => setTemplate({ ...template, fontFamily: e.target.value })}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
+                      className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-900 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                     >
                       {FONT_FAMILIES.map((f) => (
-                        <option key={f.value} value={f.value}>
-                          {f.name}
-                        </option>
+                        <option key={f.value} value={f.value}>{f.name}</option>
                       ))}
                     </select>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Alignment</label>
+                    <label className="block text-xs font-semibold text-slate-700 mb-2 uppercase tracking-wide">Align</label>
                     <select
                       value={template.alignment}
                       onChange={(e) => setTemplate({ ...template, alignment: e.target.value as any })}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
+                      className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-900 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                     >
                       <option value="left">Left</option>
                       <option value="center">Center</option>
@@ -552,66 +568,79 @@ export default function Home() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Title Size: {template.titleSize}px
-                  </label>
+                  <div className="flex items-center justify-between mb-2">
+                    <label className="text-xs font-semibold text-slate-700 uppercase tracking-wide">Title Size</label>
+                    <span className="text-xs font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded-md">{template.titleSize}px</span>
+                  </div>
                   <input
                     type="range"
-                    min="32"
-                    max="96"
+                    min="24"
+                    max="120"
                     value={template.titleSize}
                     onChange={(e) => setTemplate({ ...template, titleSize: parseInt(e.target.value) })}
-                    className="w-full"
+                    className="w-full accent-blue-600 h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Subtitle Size: {template.subtitleSize}px
-                  </label>
+                  <div className="flex items-center justify-between mb-2">
+                    <label className="text-xs font-semibold text-slate-700 uppercase tracking-wide">Subtitle Size</label>
+                    <span className="text-xs font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded-md">{template.subtitleSize}px</span>
+                  </div>
                   <input
                     type="range"
-                    min="16"
-                    max="48"
+                    min="12"
+                    max="60"
                     value={template.subtitleSize}
                     onChange={(e) => setTemplate({ ...template, subtitleSize: parseInt(e.target.value) })}
-                    className="w-full"
+                    className="w-full accent-blue-600 h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Text Color</label>
-                  <input
-                    type="color"
-                    value={template.textColor}
-                    onChange={(e) => setTemplate({ ...template, textColor: e.target.value })}
-                    className="w-full h-10 rounded-lg border border-gray-300 cursor-pointer"
-                  />
+                  <label className="block text-xs font-semibold text-slate-700 mb-2 uppercase tracking-wide">Text Color</label>
+                  <div className="flex items-center gap-2">
+                    <div className="relative h-10 w-10 rounded-lg border-2 border-slate-200 overflow-hidden">
+                      <input
+                        type="color"
+                        value={template.textColor}
+                        onChange={(e) => setTemplate({ ...template, textColor: e.target.value })}
+                        className="h-full w-full cursor-pointer"
+                      />
+                    </div>
+                    <input
+                      type="text"
+                      value={template.textColor}
+                      onChange={(e) => setTemplate({ ...template, textColor: e.target.value })}
+                      className="flex-1 bg-slate-50 border border-slate-200 rounded-lg px-2.5 py-2 text-xs font-mono text-slate-900 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                    />
+                  </div>
                 </div>
 
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-3 p-3 bg-slate-50 rounded-lg border border-slate-200">
                   <input
                     type="checkbox"
                     id="shadow"
                     checked={template.shadow}
                     onChange={(e) => setTemplate({ ...template, shadow: e.target.checked })}
-                    className="rounded"
+                    className="w-4 h-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500 cursor-pointer"
                   />
-                  <label htmlFor="shadow" className="text-sm font-medium text-gray-700">
+                  <label htmlFor="shadow" className="text-sm font-medium text-slate-700 cursor-pointer flex-1">
                     Text Shadow
                   </label>
                 </div>
               </div>
             </div>
 
-            {/* Background Controls */}
-            <div className="bg-white rounded-xl shadow-md p-4">
-              <h3 className="font-bold text-lg mb-3 text-gray-900">Background</h3>
-              <div className="space-y-3">
+            {/* Background Section */}
+            <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-5">
+              <div className="flex items-center gap-2 mb-4">
+                <div className="w-1 h-5 rounded-full bg-gradient-to-b from-purple-500 to-pink-500"></div>
+                <h2 className="text-xs font-bold uppercase tracking-widest text-slate-600">Background</h2>
+              </div>
+              <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Background Type
-                  </label>
+                  <label className="block text-xs font-semibold text-slate-700 mb-2 uppercase tracking-wide">Type</label>
                   <select
                     value={template.bg.type}
                     onChange={(e) =>
@@ -620,7 +649,7 @@ export default function Home() {
                         bg: { ...template.bg, type: e.target.value as any },
                       })
                     }
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-900 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                   >
                     <option value="solid">Solid Color</option>
                     <option value="gradient">Gradient</option>
@@ -629,56 +658,62 @@ export default function Home() {
 
                 {template.bg.type === 'solid' && (
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Color</label>
-                    <input
-                      type="color"
-                      value={template.bg.color1 || '#ffffff'}
-                      onChange={(e) =>
-                        setTemplate({
-                          ...template,
-                          bg: { ...template.bg, color1: e.target.value },
-                        })
-                      }
-                      className="w-full h-10 rounded-lg border border-gray-300 cursor-pointer"
-                    />
+                    <label className="block text-xs font-semibold text-slate-700 mb-2 uppercase tracking-wide">Color</label>
+                    <div className="h-12 rounded-lg border-2 border-slate-200 overflow-hidden">
+                      <input
+                        type="color"
+                        value={template.bg.color1 || '#ffffff'}
+                        onChange={(e) =>
+                          setTemplate({
+                            ...template,
+                            bg: { ...template.bg, color1: e.target.value },
+                          })
+                        }
+                        className="h-full w-full cursor-pointer"
+                      />
+                    </div>
                   </div>
                 )}
 
                 {template.bg.type === 'gradient' && (
                   <>
-                    <div className="grid grid-cols-2 gap-2">
+                    <div className="grid grid-cols-2 gap-3">
                       <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">Color 1</label>
-                        <input
-                          type="color"
-                          value={template.bg.color1 || '#667eea'}
-                          onChange={(e) =>
-                            setTemplate({
-                              ...template,
-                              bg: { ...template.bg, color1: e.target.value },
-                            })
-                          }
-                          className="w-full h-10 rounded-lg border border-gray-300 cursor-pointer"
-                        />
+                        <label className="block text-xs font-semibold text-slate-700 mb-2 uppercase tracking-wide">Color 1</label>
+                        <div className="h-10 rounded-lg border-2 border-slate-200 overflow-hidden">
+                          <input
+                            type="color"
+                            value={template.bg.color1 || '#667eea'}
+                            onChange={(e) =>
+                              setTemplate({
+                                ...template,
+                                bg: { ...template.bg, color1: e.target.value },
+                              })
+                            }
+                            className="h-full w-full cursor-pointer"
+                          />
+                        </div>
                       </div>
                       <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">Color 2</label>
-                        <input
-                          type="color"
-                          value={template.bg.color2 || '#764ba2'}
-                          onChange={(e) =>
-                            setTemplate({
-                              ...template,
-                              bg: { ...template.bg, color2: e.target.value },
-                            })
-                          }
-                          className="w-full h-10 rounded-lg border border-gray-300 cursor-pointer"
-                        />
+                        <label className="block text-xs font-semibold text-slate-700 mb-2 uppercase tracking-wide">Color 2</label>
+                        <div className="h-10 rounded-lg border-2 border-slate-200 overflow-hidden">
+                          <input
+                            type="color"
+                            value={template.bg.color2 || '#764ba2'}
+                            onChange={(e) =>
+                              setTemplate({
+                                ...template,
+                                bg: { ...template.bg, color2: e.target.value },
+                              })
+                            }
+                            className="h-full w-full cursor-pointer"
+                          />
+                        </div>
                       </div>
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Direction</label>
+                      <label className="block text-xs font-semibold text-slate-700 mb-2 uppercase tracking-wide">Direction</label>
                       <select
                         value={template.bg.direction || 'to-right'}
                         onChange={(e) =>
@@ -687,7 +722,7 @@ export default function Home() {
                             bg: { ...template.bg, direction: e.target.value },
                           })
                         }
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
+                        className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-900 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                       >
                         <option value="to-right">Right</option>
                         <option value="to-bottom">Bottom</option>
@@ -697,7 +732,7 @@ export default function Home() {
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Presets</label>
+                      <label className="block text-xs font-semibold text-slate-700 mb-2 uppercase tracking-wide">Presets</label>
                       <div className="grid grid-cols-6 gap-2">
                         {GRADIENT_PRESETS.map((preset) => (
                           <button
@@ -712,7 +747,7 @@ export default function Home() {
                                 },
                               })
                             }
-                            className="h-8 rounded-lg border-2 border-gray-200 hover:border-gray-400 transition"
+                            className="h-9 rounded-lg border-2 border-slate-200 hover:border-slate-400 hover:shadow-md transition-all duration-200"
                             style={{
                               background: `linear-gradient(135deg, ${preset.color1}, ${preset.color2})`,
                             }}
@@ -725,11 +760,11 @@ export default function Home() {
                 )}
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Pattern</label>
+                  <label className="block text-xs font-semibold text-slate-700 mb-2 uppercase tracking-wide">Pattern</label>
                   <select
                     value={template.pattern}
                     onChange={(e) => setTemplate({ ...template, pattern: e.target.value as any })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-900 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                   >
                     <option value="none">None</option>
                     <option value="dots">Dots</option>
@@ -739,255 +774,319 @@ export default function Home() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Background Image</label>
-                  <input
-                    ref={fileInputRef}
-                    type="file"
-                    accept="image/*"
-                    onChange={handleBackgroundImageUpload}
-                    className="w-full"
-                  />
+                  <label className="block text-xs font-semibold text-slate-700 mb-2 uppercase tracking-wide">Background Image</label>
+                  <label className="block p-3 border-2 border-dashed border-slate-300 rounded-lg text-center cursor-pointer hover:border-blue-500 hover:bg-blue-50 transition-colors">
+                    <input
+                      ref={fileInputRef}
+                      type="file"
+                      accept="image/*"
+                      onChange={handleBackgroundImageUpload}
+                      className="hidden"
+                    />
+                    <div className="text-xs font-semibold text-slate-600">
+                      {backgroundImage ? 'Change Image' : 'Click to upload'}
+                    </div>
+                  </label>
+
                   {backgroundImage && (
-                    <>
-                      <div className="mt-3 space-y-2">
-                        <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-1">
-                            Blur: {imageBlur}px
-                          </label>
-                          <input
-                            type="range"
-                            min="0"
-                            max="20"
-                            value={imageBlur}
-                            onChange={(e) => setImageBlur(parseInt(e.target.value))}
-                            className="w-full"
-                          />
+                    <div className="mt-3 space-y-3">
+                      <div>
+                        <div className="flex items-center justify-between mb-2">
+                          <label className="text-xs font-semibold text-slate-700 uppercase tracking-wide">Blur</label>
+                          <span className="text-xs font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded-md">{imageBlur}px</span>
                         </div>
-                        <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-1">
-                            Opacity: {imageOpacity}%
-                          </label>
-                          <input
-                            type="range"
-                            min="0"
-                            max="100"
-                            value={imageOpacity}
-                            onChange={(e) => setImageOpacity(parseInt(e.target.value))}
-                            className="w-full"
-                          />
-                        </div>
+                        <input
+                          type="range"
+                          min="0"
+                          max="20"
+                          value={imageBlur}
+                          onChange={(e) => setImageBlur(parseInt(e.target.value))}
+                          className="w-full accent-blue-600"
+                        />
                       </div>
-                    </>
+                      <div>
+                        <div className="flex items-center justify-between mb-2">
+                          <label className="text-xs font-semibold text-slate-700 uppercase tracking-wide">Opacity</label>
+                          <span className="text-xs font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded-md">{imageOpacity}%</span>
+                        </div>
+                        <input
+                          type="range"
+                          min="0"
+                          max="100"
+                          value={imageOpacity}
+                          onChange={(e) => setImageOpacity(parseInt(e.target.value))}
+                          className="w-full accent-blue-600"
+                        />
+                      </div>
+                    </div>
                   )}
                 </div>
               </div>
             </div>
 
-            {/* Logo Controls */}
-            <div className="bg-white rounded-xl shadow-md p-4">
-              <h3 className="font-bold text-lg mb-3 text-gray-900">Logo</h3>
-              <div className="space-y-3">
-                <input
-                  ref={logoInputRef}
-                  type="file"
-                  accept="image/*"
-                  onChange={handleLogoUpload}
-                  className="w-full"
-                />
+            {/* Logo Section */}
+            <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-5">
+              <div className="flex items-center gap-2 mb-4">
+                <div className="w-1 h-5 rounded-full bg-gradient-to-b from-indigo-500 to-blue-500"></div>
+                <h2 className="text-xs font-bold uppercase tracking-widest text-slate-600">Logo</h2>
+              </div>
+              <div className="space-y-4">
+                <label className="block p-3 border-2 border-dashed border-slate-300 rounded-lg text-center cursor-pointer hover:border-blue-500 hover:bg-blue-50 transition-colors">
+                  <input
+                    ref={logoInputRef}
+                    type="file"
+                    accept="image/*"
+                    onChange={handleLogoUpload}
+                    className="hidden"
+                  />
+                  <div className="text-xs font-semibold text-slate-600">
+                    {logoImage ? 'Change Logo' : 'Click to upload'}
+                  </div>
+                </label>
+
                 {logoImage && (
                   <>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Position</label>
+                      <label className="block text-xs font-semibold text-slate-700 mb-2 uppercase tracking-wide">Position</label>
                       <div className="grid grid-cols-2 gap-2">
                         {(['top-left', 'top-right', 'bottom-left', 'bottom-right'] as const).map((pos) => (
                           <button
                             key={pos}
                             onClick={() => setLogoPosition(pos)}
-                            className={`p-2 rounded-lg text-sm font-medium transition ${
+                            className={`px-3 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wide transition-all duration-200 ${
                               logoPosition === pos
-                                ? 'bg-orange-500 text-white'
-                                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                                ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg'
+                                : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
                             }`}
                           >
-                            {pos.replace('-', ' ')}
+                            {pos.split('-').map(w => w[0].toUpperCase() + w.slice(1)).join('-')}
                           </button>
                         ))}
                       </div>
                     </div>
+
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Size: {logoSize}px
-                      </label>
+                      <div className="flex items-center justify-between mb-2">
+                        <label className="text-xs font-semibold text-slate-700 uppercase tracking-wide">Size</label>
+                        <span className="text-xs font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded-md">{logoSize}px</span>
+                      </div>
                       <input
                         type="range"
                         min="40"
                         max="200"
                         value={logoSize}
                         onChange={(e) => setLogoSize(parseInt(e.target.value))}
-                        className="w-full"
+                        className="w-full accent-blue-600"
                       />
                     </div>
+
+                    <button
+                      onClick={() => {
+                        setLogoImage(null);
+                        if (logoInputRef.current) logoInputRef.current.value = '';
+                      }}
+                      className="w-full text-xs font-semibold text-red-600 hover:text-red-700 px-3 py-2 rounded-lg bg-red-50 hover:bg-red-100 transition-colors"
+                    >
+                      Remove Logo
+                    </button>
                   </>
                 )}
               </div>
             </div>
           </div>
 
-          {/* Center - Canvas Preview */}
-          <div className="lg:col-span-1 flex flex-col items-center justify-center">
-            <div className="bg-white rounded-xl shadow-2xl overflow-hidden p-4 w-full">
-              <canvas
-                ref={canvasRef}
-                width={1200}
-                height={630}
-                className="w-full h-auto bg-gray-100 rounded-lg"
-              />
+          {/* CENTER PANEL - CANVAS PREVIEW (6 cols on desktop) */}
+          <div className="lg:col-span-6 flex flex-col items-center justify-start">
+            <div className="w-full bg-white rounded-2xl shadow-2xl border border-slate-100 overflow-hidden">
+              <div className="aspect-video bg-gradient-to-br from-slate-100 to-slate-200 flex items-center justify-center p-6">
+                <canvas
+                  ref={canvasRef}
+                  width={1200}
+                  height={630}
+                  className="w-full h-full rounded-xl shadow-xl"
+                />
+              </div>
             </div>
 
-            {/* Export Options */}
-            <div className="mt-6 w-full space-y-3">
+            <div className="w-full mt-6 space-y-4">
               <div className="grid grid-cols-2 gap-3">
                 <button
                   onClick={() => downloadCanvas('png')}
-                  className="bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600 text-white font-medium py-2 px-4 rounded-lg transition shadow-md"
+                  className="group relative bg-gradient-to-r from-orange-500 via-orange-500 to-pink-500 hover:shadow-xl text-white font-bold py-3 px-4 rounded-xl transition-all duration-200 overflow-hidden"
                 >
-                  Download PNG
+                  <div className="absolute inset-0 bg-white/0 group-hover:bg-white/20 transition-colors" />
+                  <span className="relative flex items-center justify-center gap-2">
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                    </svg>
+                    PNG
+                  </span>
                 </button>
                 <button
                   onClick={() => downloadCanvas('jpeg')}
-                  className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-medium py-2 px-4 rounded-lg transition shadow-md"
+                  className="group relative bg-gradient-to-r from-purple-500 via-purple-500 to-indigo-500 hover:shadow-xl text-white font-bold py-3 px-4 rounded-xl transition-all duration-200 overflow-hidden"
                 >
-                  Download JPEG
+                  <div className="absolute inset-0 bg-white/0 group-hover:bg-white/20 transition-colors" />
+                  <span className="relative flex items-center justify-center gap-2">
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                    </svg>
+                    JPEG
+                  </span>
                 </button>
               </div>
 
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">JPEG Quality: {jpegQuality}%</label>
+              <div className="bg-white rounded-xl p-4 border border-slate-100">
+                <div className="flex items-center justify-between mb-2">
+                  <label className="text-xs font-semibold text-slate-700 uppercase tracking-wide">JPEG Quality</label>
+                  <span className="text-xs font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded-md">{jpegQuality}%</span>
+                </div>
                 <input
                   type="range"
                   min="60"
                   max="100"
                   value={jpegQuality}
                   onChange={(e) => setJpegQuality(parseInt(e.target.value))}
-                  className="w-full"
+                  className="w-full accent-blue-600"
                 />
               </div>
 
               <button
                 onClick={copyCanvasAsBase64}
-                className={`w-full font-medium py-2 px-4 rounded-lg transition ${
+                className={`w-full font-bold py-3 px-4 rounded-xl transition-all duration-200 border-2 flex items-center justify-center gap-2 ${
                   copiedCanvasUrl
-                    ? 'bg-green-500 text-white'
-                    : 'bg-blue-500 hover:bg-blue-600 text-white'
+                    ? 'bg-green-50 border-green-200 text-green-700'
+                    : 'bg-slate-50 border-slate-200 text-slate-700 hover:border-blue-300'
                 }`}
               >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                </svg>
                 {copiedCanvasUrl ? 'Copied Base64!' : 'Copy as Base64'}
+              </button>
+
+              <button
+                onClick={() => setShowMetaTags(!showMetaTags)}
+                className="w-full font-bold py-3 px-4 rounded-xl transition-all duration-200 border-2 bg-slate-50 border-slate-200 text-slate-700 hover:border-blue-300 flex items-center justify-center gap-2"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20H7a2 2 0 01-2-2V6a2 2 0 012-2h3" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 4h3a2 2 0 012 2v12a2 2 0 01-2 2h-3" />
+                </svg>
+                {showMetaTags ? 'Hide' : 'View'} Meta Tags
               </button>
             </div>
           </div>
 
-          {/* Right Panel - Social Previews & Meta Tags */}
-          <div className="lg:col-span-1 space-y-6">
-            {/* Page Info */}
-            <div className="bg-white rounded-xl shadow-md p-4">
-              <h3 className="font-bold text-lg mb-3 text-gray-900">Page Info</h3>
+          {/* RIGHT PANEL - SOCIAL PREVIEWS (3 cols on desktop) */}
+          <div className="lg:col-span-3 space-y-5 max-h-[calc(100vh-180px)] overflow-y-auto pl-2">
+            <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-5">
+              <div className="flex items-center gap-2 mb-4">
+                <div className="w-1 h-5 rounded-full bg-gradient-to-b from-green-500 to-emerald-500"></div>
+                <h2 className="text-xs font-bold uppercase tracking-widest text-slate-600">Page Info</h2>
+              </div>
               <div className="space-y-3">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Page Title</label>
+                  <label className="block text-xs font-semibold text-slate-700 mb-2 uppercase tracking-wide">Title</label>
                   <input
                     type="text"
                     value={pageTitle}
                     onChange={(e) => setPageTitle(e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-900 placeholder-slate-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                    placeholder="Page title"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Description</label>
+                  <label className="block text-xs font-semibold text-slate-700 mb-2 uppercase tracking-wide">Description</label>
                   <textarea
                     value={pageDescription}
                     onChange={(e) => setPageDescription(e.target.value)}
                     rows={3}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-900 placeholder-slate-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none"
+                    placeholder="Describe your page..."
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">URL</label>
+                  <label className="block text-xs font-semibold text-slate-700 mb-2 uppercase tracking-wide">URL</label>
                   <input
                     type="text"
                     value={pageUrl}
                     onChange={(e) => setPageUrl(e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2.5 text-sm font-mono text-slate-900 placeholder-slate-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                    placeholder="yoursite.com"
                   />
                 </div>
               </div>
             </div>
 
-            {/* Social Preview - Twitter */}
-            <div className="bg-white rounded-xl shadow-md p-4 border border-gray-200">
-              <h3 className="font-bold text-base mb-3 text-gray-900">Twitter Preview</h3>
-              <div className="border border-gray-300 rounded-lg overflow-hidden">
-                <div className="bg-gray-900 text-white p-3">
-                  <div className="text-xs text-gray-500 mb-2">twitter.com</div>
-                  <h4 className="font-bold text-sm mb-1">{pageTitle}</h4>
-                  <p className="text-xs text-gray-400 mb-2">{pageDescription}</p>
-                  <div className="bg-gray-800 aspect-video rounded flex items-center justify-center mb-2">
-                    <span className="text-xs text-gray-500">OG Image Preview</span>
-                  </div>
-                  <div className="text-xs text-gray-500">{pageUrl}</div>
+            <div className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+              <div className="p-4 border-b border-slate-100">
+                <h3 className="text-xs font-bold uppercase tracking-widest text-slate-600">Twitter Preview</h3>
+              </div>
+              <div className="bg-slate-950 text-white p-4 space-y-2 text-xs">
+                <div className="text-slate-500">twitter.com</div>
+                <h4 className="font-bold text-sm line-clamp-2">{pageTitle || 'Page Title'}</h4>
+                <p className="text-slate-400 line-clamp-2 text-xs">{pageDescription || 'Page description...'}</p>
+                <div className="bg-slate-800 aspect-video rounded flex items-center justify-center text-slate-500 text-xs font-medium my-2">
+                  OG Preview
+                </div>
+                <div className="text-slate-500 line-clamp-1">{pageUrl || 'yoursite.com'}</div>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+              <div className="p-4 border-b border-slate-100">
+                <h3 className="text-xs font-bold uppercase tracking-widest text-slate-600">Facebook Preview</h3>
+              </div>
+              <div className="bg-white border-t border-slate-200">
+                <div className="bg-slate-100 aspect-video flex items-center justify-center text-slate-500 text-xs font-medium">
+                  OG Preview
+                </div>
+                <div className="p-4 space-y-1">
+                  <div className="text-xs font-medium text-blue-600 line-clamp-1">{pageUrl || 'yoursite.com'}</div>
+                  <h4 className="font-bold text-sm line-clamp-1 text-slate-900">{pageTitle || 'Page Title'}</h4>
+                  <p className="text-xs text-slate-600 line-clamp-2">{pageDescription || 'Page description...'}</p>
                 </div>
               </div>
             </div>
 
-            {/* Social Preview - Facebook */}
-            <div className="bg-white rounded-xl shadow-md p-4 border border-gray-200">
-              <h3 className="font-bold text-base mb-3 text-gray-900">Facebook Preview</h3>
-              <div className="border border-blue-300 rounded-lg overflow-hidden">
-                <div className="bg-white">
-                  <div className="bg-gray-100 aspect-video flex items-center justify-center mb-0">
-                    <span className="text-xs text-gray-500">OG Image Preview</span>
-                  </div>
-                  <div className="p-3">
-                    <h4 className="font-bold text-sm text-blue-600 mb-1">{pageUrl}</h4>
-                    <h5 className="font-bold text-sm mb-1">{pageTitle}</h5>
-                    <p className="text-xs text-gray-600">{pageDescription}</p>
-                  </div>
+            {showMetaTags && (
+              <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-5">
+                <div className="flex items-center gap-2 mb-4">
+                  <div className="w-1 h-5 rounded-full bg-gradient-to-b from-slate-500 to-slate-700"></div>
+                  <h2 className="text-xs font-bold uppercase tracking-widest text-slate-600">Meta Tags Code</h2>
                 </div>
+                <div className="bg-slate-950 rounded-xl p-4 overflow-auto max-h-64 mb-3">
+                  <pre className="text-xs text-slate-300 font-mono whitespace-pre-wrap break-words">
+                    {getMetaTags()}
+                  </pre>
+                </div>
+                <button
+                  onClick={copyMetaTags}
+                  className={`w-full font-bold py-2 px-3 rounded-lg transition-all duration-200 text-xs flex items-center justify-center gap-2 ${
+                    copiedMetaTags
+                      ? 'bg-green-50 text-green-700 border border-green-200'
+                      : 'bg-slate-100 text-slate-700 border border-slate-200 hover:border-blue-300'
+                  }`}
+                >
+                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                  </svg>
+                  {copiedMetaTags ? 'Copied!' : 'Copy Meta Tags'}
+                </button>
               </div>
-            </div>
-
-            {/* Meta Tags */}
-            <div className="bg-white rounded-xl shadow-md p-4">
-              <button
-                onClick={() => setShowMetaTags(!showMetaTags)}
-                className="w-full flex items-center justify-between font-bold text-lg text-gray-900 mb-3"
-              >
-                Meta Tags
-                <span>{showMetaTags ? '▼' : '▶'}</span>
-              </button>
-
-              {showMetaTags && (
-                <div className="space-y-3">
-                  <div className="bg-gray-900 rounded-lg p-3 overflow-auto max-h-48">
-                    <pre className="text-xs text-gray-200 font-mono whitespace-pre-wrap">
-                      {getMetaTags()}
-                    </pre>
-                  </div>
-                  <button
-                    onClick={copyMetaTags}
-                    className={`w-full font-medium py-2 px-4 rounded-lg transition ${
-                      copiedMetaTags
-                        ? 'bg-green-500 text-white'
-                        : 'bg-gray-700 hover:bg-gray-800 text-white'
-                    }`}
-                  >
-                    {copiedMetaTags ? 'Meta Tags Copied!' : 'Copy All Meta Tags'}
-                  </button>
-                </div>
-              )}
-            </div>
+            )}
           </div>
         </div>
-      </div>
+      </main>
+
+      <footer className="border-t border-slate-200 bg-white/50 backdrop-blur-xl mt-12">
+        <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center">
+          <p className="text-xs text-slate-600 font-medium">
+            Made with Canvas API • Your designs never leave your browser
+          </p>
+        </div>
+      </footer>
     </div>
   );
 }
