@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/api'],
     },
-    sitemap: 'https://makemyog.app/sitemap.xml',
+    sitemap: 'https://makemyogapp.vercel.app/sitemap.xml',
   };
 }

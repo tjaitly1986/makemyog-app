@@ -10,19 +10,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     {
-      url: 'https://makemyog.app',
+      url: 'https://makemyogapp.vercel.app',
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 1,
     },
     {
-      url: 'https://makemyog.app/blog',
+      url: 'https://makemyogapp.vercel.app/blog',
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.8,
     },
     ...blogSlugs.map((slug) => ({
-      url: `https://makemyog.app/blog/${slug}`,
+      url: `https://makemyogapp.vercel.app/blog/${slug}`,
       lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.6,

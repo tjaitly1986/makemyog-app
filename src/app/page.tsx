@@ -426,7 +426,7 @@ export default function Home() {
   }
 
   function getMetaTags() {
-    const imageUrl = canvasRef.current?.toDataURL('image/png') || 'https://makemyog.app/og-image.png';
+    const imageUrl = canvasRef.current?.toDataURL('image/png') || 'https://makemyogapp.vercel.app/og-image.png';
 
     return `<meta property="og:title" content="${pageTitle}" />
 <meta property="og:description" content="${pageDescription}" />

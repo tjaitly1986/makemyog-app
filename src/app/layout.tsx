@@ -5,20 +5,20 @@ export const metadata: Metadata = {
   title: 'Make My OG | Free OG Image & Social Card Generator',
   description: 'Create stunning OG images and social cards instantly with our free visual generator. No design skills needed. Download PNG/JPEG, copy meta tags, and share on Twitter, Facebook, LinkedIn.',
   keywords: 'OG image generator, open graph image, social card generator, Twitter card, meta tags, social media preview, og:image, social sharing',
-  metadataBase: new URL('https://makemyog.app'),
+  metadataBase: new URL('https://makemyogapp.vercel.app'),
   alternates: {
-    canonical: 'https://makemyog.app',
+    canonical: 'https://makemyogapp.vercel.app',
   },
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://makemyog.app',
+    url: 'https://makemyogapp.vercel.app',
     siteName: 'Make My OG',
     title: 'Make My OG | Free OG Image & Social Card Generator',
     description: 'Create stunning OG images and social cards instantly with our free visual generator.',
     images: [
       {
-        url: 'https://makemyog.app/og-image.png',
+        url: 'https://makemyogapp.vercel.app/og-image.png',
         width: 1200,
         height: 630,
         alt: 'Make My OG - OG Image Generator',
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     site: '@makemyog',
     title: 'Make My OG | Free OG Image & Social Card Generator',
     description: 'Create stunning OG images and social cards instantly with our free visual generator.',
-    images: ['https://makemyog.app/og-image.png'],
+    images: ['https://makemyogapp.vercel.app/og-image.png'],
   },
 };
 
@@ -65,7 +65,7 @@ export default function RootLayout({
               '@type': 'WebApplication',
               name: 'Make My OG',
               description: 'Free OG Image & Social Card Generator',
-              url: 'https://makemyog.app',
+              url: 'https://makemyogapp.vercel.app',
               applicationCategory: 'DesignApplication',
               browserRequirements: 'HTML5 Browser',
               offers: {
@@ -73,7 +73,7 @@ export default function RootLayout({
                 price: '0',
                 priceCurrency: 'USD',
               },
-              image: 'https://makemyog.app/og-image.png',
+              image: 'https://makemyogapp.vercel.app/og-image.png',
             }),
           }}
         />
