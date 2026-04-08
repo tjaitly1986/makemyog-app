@@ -446,30 +446,30 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-50">
+    <div className="min-h-screen" style={{ background: '#e5e9f0' }}>
       {/* Premium Header */}
-      <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/80 backdrop-blur-xl">
+      <header className="sticky top-0 z-50" style={{ background: 'linear-gradient(135deg, #f97316, #ec4899, #8b5cf6)', borderBottom: '1px solid rgba(0,0,0,0.1)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-black bg-gradient-to-r from-orange-600 via-pink-600 to-purple-600 bg-clip-text text-transparent drop-shadow-sm">
+            <h1 className="text-3xl font-black text-white drop-shadow-md">
               Make My OG
             </h1>
-            <p className="text-sm text-slate-600 font-medium mt-0.5">Free OG Image & Social Card Generator</p>
+            <p className="text-sm text-white/80 font-medium mt-0.5">Free OG Image & Social Card Generator</p>
           </div>
-          <div className="hidden sm:flex items-center gap-1 px-3 py-1.5 rounded-full bg-gradient-to-r from-blue-50 to-slate-50 border border-slate-200">
-            <span className="inline-block w-2 h-2 rounded-full bg-green-500"></span>
-            <span className="text-xs font-semibold text-slate-700">100% Client-side · No server processing</span>
+          <div className="hidden sm:flex items-center gap-1 px-3 py-1.5 rounded-full" style={{ background: 'rgba(255,255,255,0.2)', backdropFilter: 'blur(10px)' }}>
+            <span className="inline-block w-2 h-2 rounded-full bg-green-400"></span>
+            <span className="text-xs font-semibold text-white">100% Client-side · No server processing</span>
           </div>
         </div>
       </header>
 
-      <main className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <main className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Three-column premium layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 auto-rows-min">
           {/* LEFT PANEL - CONTROLS (3 cols on desktop) */}
           <div className="lg:col-span-3 space-y-5 max-h-[calc(100vh-180px)] overflow-y-auto pr-2">
             {/* Templates Section */}
-            <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-5">
+            <div className="og-card">
               <div className="flex items-center gap-2 mb-4">
                 <div className="w-1 h-5 rounded-full bg-gradient-to-b from-orange-500 to-pink-500"></div>
                 <h2 className="text-xs font-bold uppercase tracking-widest text-slate-600">Templates</h2>
@@ -501,7 +501,7 @@ export default function Home() {
             </div>
 
             {/* Text Section */}
-            <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-5">
+            <div className="og-card">
               <div className="flex items-center gap-2 mb-4">
                 <div className="w-1 h-5 rounded-full bg-gradient-to-b from-blue-500 to-purple-500"></div>
                 <h2 className="text-xs font-bold uppercase tracking-widest text-slate-600">Text</h2>
@@ -633,7 +633,7 @@ export default function Home() {
             </div>
 
             {/* Background Section */}
-            <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-5">
+            <div className="og-card">
               <div className="flex items-center gap-2 mb-4">
                 <div className="w-1 h-5 rounded-full bg-gradient-to-b from-purple-500 to-pink-500"></div>
                 <h2 className="text-xs font-bold uppercase tracking-widest text-slate-600">Background</h2>
@@ -825,7 +825,7 @@ export default function Home() {
             </div>
 
             {/* Logo Section */}
-            <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-5">
+            <div className="og-card">
               <div className="flex items-center gap-2 mb-4">
                 <div className="w-1 h-5 rounded-full bg-gradient-to-b from-indigo-500 to-blue-500"></div>
                 <h2 className="text-xs font-bold uppercase tracking-widest text-slate-600">Logo</h2>
@@ -897,7 +897,7 @@ export default function Home() {
 
           {/* CENTER PANEL - CANVAS PREVIEW (6 cols on desktop) */}
           <div className="lg:col-span-6 flex flex-col items-center justify-start">
-            <div className="w-full bg-white rounded-2xl shadow-2xl border border-slate-100 overflow-hidden">
+            <div className="w-full og-card-flush" style={{ boxShadow: '0 10px 40px rgba(0,0,0,0.12)' }}>
               <div className="aspect-video bg-gradient-to-br from-slate-100 to-slate-200 flex items-center justify-center p-6">
                 <canvas
                   ref={canvasRef}
@@ -936,7 +936,7 @@ export default function Home() {
                 </button>
               </div>
 
-              <div className="bg-white rounded-xl p-4 border border-slate-100">
+              <div className="bg-white rounded-xl p-4 border border-slate-300">
                 <div className="flex items-center justify-between mb-2">
                   <label className="text-xs font-semibold text-slate-700 uppercase tracking-wide">JPEG Quality</label>
                   <span className="text-xs font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded-md">{jpegQuality}%</span>
@@ -980,7 +980,7 @@ export default function Home() {
 
           {/* RIGHT PANEL - SOCIAL PREVIEWS (3 cols on desktop) */}
           <div className="lg:col-span-3 space-y-5 max-h-[calc(100vh-180px)] overflow-y-auto pl-2">
-            <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-5">
+            <div className="og-card">
               <div className="flex items-center gap-2 mb-4">
                 <div className="w-1 h-5 rounded-full bg-gradient-to-b from-green-500 to-emerald-500"></div>
                 <h2 className="text-xs font-bold uppercase tracking-widest text-slate-600">Page Info</h2>
@@ -1019,8 +1019,8 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
-              <div className="p-4 border-b border-slate-100">
+            <div className="og-card-flush">
+              <div className="p-4 border-b border-slate-300">
                 <h3 className="text-xs font-bold uppercase tracking-widest text-slate-600">Twitter Preview</h3>
               </div>
               <div className="bg-slate-950 text-white p-4 space-y-2 text-xs">
@@ -1034,8 +1034,8 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
-              <div className="p-4 border-b border-slate-100">
+            <div className="og-card-flush">
+              <div className="p-4 border-b border-slate-300">
                 <h3 className="text-xs font-bold uppercase tracking-widest text-slate-600">Facebook Preview</h3>
               </div>
               <div className="bg-white border-t border-slate-200">
@@ -1051,7 +1051,7 @@ export default function Home() {
             </div>
 
             {showMetaTags && (
-              <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-5">
+              <div className="og-card">
                 <div className="flex items-center gap-2 mb-4">
                   <div className="w-1 h-5 rounded-full bg-gradient-to-b from-slate-500 to-slate-700"></div>
                   <h2 className="text-xs font-bold uppercase tracking-widest text-slate-600">Meta Tags Code</h2>
@@ -1081,7 +1081,7 @@ export default function Home() {
       </main>
 
       <footer className="border-t border-slate-200 bg-white/50 backdrop-blur-xl mt-12">
-        <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center">
+        <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center">
           <p className="text-xs text-slate-600 font-medium">
             Made with Canvas API • Your designs never leave your browser
           </p>
