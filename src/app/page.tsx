@@ -479,27 +479,38 @@ export default function Home() {
                 <div style={{ width: '4px', height: '20px', borderRadius: '4px', background: 'linear-gradient(to bottom, #f97316, #ec4899)' }}></div>
                 <h2 style={{ fontSize: '11px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#475569' }}>Templates</h2>
               </div>
-              <div className="grid grid-cols-4 gap-2">
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '8px' }}>
                 {TEMPLATES.map((t) => (
                   <button
                     key={t.id}
                     onClick={() => setTemplate(t)}
-                    className={`relative group rounded-lg overflow-hidden transition-all duration-200 h-12 ${
-                      template.id === t.id
-                        ? 'ring-2 ring-blue-500 ring-offset-2'
-                        : 'hover:shadow-md'
-                    }`}
+                    style={{
+                      position: 'relative',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      borderRadius: '8px',
+                      overflow: 'hidden',
+                      height: '44px',
+                      border: template.id === t.id ? '2px solid #3b82f6' : '1px solid rgba(255,255,255,0.2)',
+                      outline: template.id === t.id ? '2px solid #3b82f6' : 'none',
+                      outlineOffset: '2px',
+                      cursor: 'pointer',
+                      background: t.bg.type === 'gradient'
+                        ? `linear-gradient(135deg, ${t.bg.color1}, ${t.bg.color2})`
+                        : t.bg.color1,
+                    }}
                   >
-                    <div
-                      className="absolute inset-0"
-                      style={{
-                        background: t.bg.type === 'gradient'
-                          ? `linear-gradient(135deg, ${t.bg.color1}, ${t.bg.color2})`
-                          : t.bg.color1,
-                      }}
-                    />
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors" />
-                    <span className="relative text-xs font-bold text-white mix-blend-overlay drop-shadow-lg">{t.name.split(' ')[0]}</span>
+                    <span style={{
+                      position: 'relative',
+                      fontSize: '10px',
+                      fontWeight: 700,
+                      color: '#ffffff',
+                      textShadow: '0 1px 3px rgba(0,0,0,0.5)',
+                      lineHeight: 1.2,
+                      textAlign: 'center',
+                      padding: '2px 4px',
+                    }}>{t.name}</span>
                   </button>
                 ))}
               </div>
@@ -583,7 +594,7 @@ export default function Home() {
                     max="120"
                     value={template.titleSize}
                     onChange={(e) => setTemplate({ ...template, titleSize: parseInt(e.target.value) })}
-                    className="w-full accent-blue-600 h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer"
+                    className="w-full" style={{ accentColor: '#2563eb', height: '6px', cursor: 'pointer' }}
                   />
                 </div>
 
@@ -598,7 +609,7 @@ export default function Home() {
                     max="60"
                     value={template.subtitleSize}
                     onChange={(e) => setTemplate({ ...template, subtitleSize: parseInt(e.target.value) })}
-                    className="w-full accent-blue-600 h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer"
+                    className="w-full" style={{ accentColor: '#2563eb', height: '6px', cursor: 'pointer' }}
                   />
                 </div>
 
@@ -628,9 +639,9 @@ export default function Home() {
                     id="shadow"
                     checked={template.shadow}
                     onChange={(e) => setTemplate({ ...template, shadow: e.target.checked })}
-                    className="w-4 h-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500 cursor-pointer"
+                    style={{ width: '16px', height: '16px', accentColor: '#2563eb', cursor: 'pointer' }}
                   />
-                  <label htmlFor="shadow" className="text-sm font-medium text-slate-700 cursor-pointer flex-1">
+                  <label htmlFor="shadow" style={{ fontSize: '13px', fontWeight: 500, color: '#334155', cursor: 'pointer', flex: 1 }}>
                     Text Shadow
                   </label>
                 </div>
@@ -1005,7 +1016,7 @@ export default function Home() {
                     value={pageDescription}
                     onChange={(e) => setPageDescription(e.target.value)}
                     rows={3}
-                    className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2.5 text-sm font-medium text-slate-900 placeholder-slate-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none"
+                    className="w-full rounded-lg" style={{ background: '#f8fafc', border: '1px solid #94a3b8', padding: '10px 12px', fontSize: '13px', fontWeight: 500, color: '#0f172a', outline: 'none', resize: 'none' }}
                     placeholder="Describe your page..."
                   />
                 </div>
@@ -1015,7 +1026,7 @@ export default function Home() {
                     type="text"
                     value={pageUrl}
                     onChange={(e) => setPageUrl(e.target.value)}
-                    className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2.5 text-sm font-mono text-slate-900 placeholder-slate-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                    className="w-full rounded-lg" style={{ background: '#f8fafc', border: '1px solid #94a3b8', padding: '10px 12px', fontSize: '13px', fontWeight: 500, color: '#0f172a', outline: 'none', fontFamily: 'monospace' }}
                     placeholder="yoursite.com"
                   />
                 </div>
@@ -1023,32 +1034,40 @@ export default function Home() {
             </div>
 
             <div style={{ background: '#ffffff', borderRadius: '16px', boxShadow: '0 4px 24px rgba(0,0,0,0.08)', border: '1px solid #94a3b8', overflow: 'hidden' }}>
-              <div style={{ padding: '16px', borderBottom: '1px solid #94a3b8' }}>
+              <div style={{ padding: '16px', borderBottom: '1px solid #94a3b8', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <div style={{ width: '4px', height: '20px', borderRadius: '4px', background: 'linear-gradient(to bottom, #1DA1F2, #0d8bd9)' }}></div>
                 <h3 style={{ fontSize: '11px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#475569' }}>Twitter Preview</h3>
               </div>
-              <div className="bg-slate-950 text-white p-4 space-y-2 text-xs">
-                <div className="text-slate-500">twitter.com</div>
-                <h4 className="font-bold text-sm line-clamp-2">{pageTitle || 'Page Title'}</h4>
-                <p className="text-slate-400 line-clamp-2 text-xs">{pageDescription || 'Page description...'}</p>
-                <div className="bg-slate-800 aspect-video rounded flex items-center justify-center text-slate-500 text-xs font-medium my-2">
-                  OG Preview
+              <div style={{ background: '#15202b', padding: '16px' }}>
+                <div style={{ border: '1px solid #38444d', borderRadius: '12px', overflow: 'hidden' }}>
+                  <div style={{ background: '#1e2732', aspectRatio: '1200/630', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
+                    <canvas ref={canvasRef} width={1200} height={630} style={{ display: 'none' }} />
+                    <div style={{ fontSize: '12px', color: '#8899a6', fontWeight: 500 }}>OG Image Preview</div>
+                  </div>
+                  <div style={{ padding: '12px', borderTop: '1px solid #38444d' }}>
+                    <div style={{ fontSize: '11px', color: '#8899a6', marginBottom: '4px' }}>{pageUrl || 'yoursite.com'}</div>
+                    <div style={{ fontSize: '14px', fontWeight: 700, color: '#ffffff', marginBottom: '4px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{pageTitle || 'Page Title'}</div>
+                    <div style={{ fontSize: '12px', color: '#8899a6', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{pageDescription || 'Page description...'}</div>
+                  </div>
                 </div>
-                <div className="text-slate-500 line-clamp-1">{pageUrl || 'yoursite.com'}</div>
               </div>
             </div>
 
             <div style={{ background: '#ffffff', borderRadius: '16px', boxShadow: '0 4px 24px rgba(0,0,0,0.08)', border: '1px solid #94a3b8', overflow: 'hidden' }}>
-              <div style={{ padding: '16px', borderBottom: '1px solid #94a3b8' }}>
+              <div style={{ padding: '16px', borderBottom: '1px solid #94a3b8', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <div style={{ width: '4px', height: '20px', borderRadius: '4px', background: 'linear-gradient(to bottom, #1877F2, #0d65d9)' }}></div>
                 <h3 style={{ fontSize: '11px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#475569' }}>Facebook Preview</h3>
               </div>
-              <div className="bg-white border-t border-slate-200">
-                <div className="bg-slate-100 aspect-video flex items-center justify-center text-slate-500 text-xs font-medium">
-                  OG Preview
-                </div>
-                <div className="p-4 space-y-1">
-                  <div className="text-xs font-medium text-blue-600 line-clamp-1">{pageUrl || 'yoursite.com'}</div>
-                  <h4 className="font-bold text-sm line-clamp-1 text-slate-900">{pageTitle || 'Page Title'}</h4>
-                  <p className="text-xs text-slate-600 line-clamp-2">{pageDescription || 'Page description...'}</p>
+              <div style={{ background: '#f0f2f5', padding: '16px' }}>
+                <div style={{ background: '#ffffff', borderRadius: '8px', overflow: 'hidden', border: '1px solid #dadde1' }}>
+                  <div style={{ background: '#e4e6eb', aspectRatio: '1200/630', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <div style={{ fontSize: '12px', color: '#65676b', fontWeight: 500 }}>OG Image Preview</div>
+                  </div>
+                  <div style={{ padding: '12px 14px', borderTop: '1px solid #dadde1', background: '#f0f2f5' }}>
+                    <div style={{ fontSize: '11px', color: '#65676b', textTransform: 'uppercase', marginBottom: '4px' }}>{pageUrl || 'yoursite.com'}</div>
+                    <div style={{ fontSize: '15px', fontWeight: 700, color: '#1c1e21', marginBottom: '4px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{pageTitle || 'Page Title'}</div>
+                    <div style={{ fontSize: '13px', color: '#65676b', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{pageDescription || 'Page description...'}</div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -1059,8 +1078,8 @@ export default function Home() {
                   <div style={{ width: '4px', height: '20px', borderRadius: '4px', background: 'linear-gradient(to bottom, #64748b, #334155)' }}></div>
                   <h2 style={{ fontSize: '11px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#475569' }}>Meta Tags Code</h2>
                 </div>
-                <div className="bg-slate-950 rounded-xl p-4 overflow-auto max-h-64 mb-3">
-                  <pre className="text-xs text-slate-300 font-mono whitespace-pre-wrap break-words">
+                <div style={{ background: '#0f172a', borderRadius: '12px', padding: '16px', overflow: 'auto', maxHeight: '256px', marginBottom: '12px' }}>
+                  <pre style={{ fontSize: '12px', color: '#cbd5e1', fontFamily: 'monospace', whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}>
                     {getMetaTags()}
                   </pre>
                 </div>
