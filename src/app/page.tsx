@@ -181,6 +181,26 @@ export default function Home() {
   const [showMetaTags, setShowMetaTags] = useState(false);
   const [copiedMetaTags, setCopiedMetaTags] = useState(false);
   const [copiedCanvasUrl, setCopiedCanvasUrl] = useState(false);
+  const [showWelcome, setShowWelcome] = useState(false);
+  const [guideExpanded, setGuideExpanded] = useState(true);
+
+  // Show welcome modal on first visit
+  useEffect(() => {
+    const hasVisited = localStorage.getItem('makemyog-visited');
+    if (!hasVisited) {
+      setShowWelcome(true);
+      localStorage.setItem('makemyog-visited', 'true');
+    }
+  }, []);
+
+  const GUIDE_STEPS = [
+    { icon: '🎨', title: 'Pick a Template', desc: 'Choose from 8 pre-designed templates to get started quickly.' },
+    { icon: '✏️', title: 'Customize Text', desc: 'Edit title, subtitle, author, font, alignment, and text size.' },
+    { icon: '🖼️', title: 'Add Background & Logo', desc: 'Upload a background image or use solid/gradient colors. Add your logo.' },
+    { icon: '📐', title: 'Live Preview', desc: 'See your OG image update in real-time as you make changes.' },
+    { icon: '⬇️', title: 'Download', desc: 'Export as PNG or JPEG. Adjust JPEG quality with the slider.' },
+    { icon: '📋', title: 'Copy Meta Tags', desc: 'Click "View Meta Tags" to get ready-to-paste HTML for your site.' },
+  ];
 
   // Draw canvas on state changes
   useEffect(() => {
@@ -447,6 +467,36 @@ export default function Home() {
 
   return (
     <div className="min-h-screen" style={{ background: '#e5e9f0' }}>
+      {/* Welcome Modal */}
+      {showWelcome && (
+        <div style={{ position: 'fixed', inset: 0, zIndex: 100, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(0,0,0,0.5)', backdropFilter: 'blur(4px)' }} onClick={() => setShowWelcome(false)}>
+          <div style={{ background: '#ffffff', borderRadius: '20px', maxWidth: '520px', width: '90%', padding: '32px', boxShadow: '0 25px 60px rgba(0,0,0,0.3)', position: 'relative' }} onClick={(e) => e.stopPropagation()}>
+            <button onClick={() => setShowWelcome(false)} style={{ position: 'absolute', top: '16px', right: '16px', background: 'none', border: 'none', fontSize: '20px', color: '#94a3b8', cursor: 'pointer', padding: '4px 8px' }}>✕</button>
+            <div style={{ textAlign: 'center', marginBottom: '24px' }}>
+              <div style={{ fontSize: '48px', marginBottom: '12px' }}>🎨</div>
+              <h2 style={{ fontSize: '22px', fontWeight: 800, color: '#0f172a', margin: '0 0 6px 0' }}>Welcome to Make My OG!</h2>
+              <p style={{ fontSize: '14px', color: '#64748b', margin: 0 }}>Create stunning OG images in 6 simple steps</p>
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              {GUIDE_STEPS.map((step, i) => (
+                <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '12px', padding: '10px 12px', borderRadius: '10px', background: '#f8fafc', border: '1px solid #e2e8f0' }}>
+                  <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: 'linear-gradient(135deg, #f97316, #ec4899)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '16px', flexShrink: 0 }}>{step.icon}</div>
+                  <div>
+                    <div style={{ fontSize: '13px', fontWeight: 700, color: '#0f172a', marginBottom: '2px' }}>
+                      <span style={{ color: '#94a3b8', marginRight: '6px' }}>{i + 1}.</span>{step.title}
+                    </div>
+                    <div style={{ fontSize: '12px', color: '#64748b', lineHeight: 1.4 }}>{step.desc}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <button onClick={() => setShowWelcome(false)} style={{ marginTop: '20px', width: '100%', padding: '12px', borderRadius: '10px', border: 'none', background: 'linear-gradient(135deg, #f97316, #ec4899)', color: '#ffffff', fontSize: '14px', fontWeight: 700, cursor: 'pointer', boxShadow: '0 4px 12px rgba(249,115,22,0.3)' }}>
+              Got it, let&apos;s create!
+            </button>
+          </div>
+        </div>
+      )}
+
       {/* Premium Header */}
       <header style={{ background: 'linear-gradient(135deg, #f97316, #ec4899, #8b5cf6)', borderBottom: '2px solid rgba(0,0,0,0.15)', position: 'sticky', top: 0, zIndex: 50, boxShadow: '0 4px 20px rgba(249,115,22,0.3)' }}>
         <div style={{ maxWidth: '1536px', margin: '0 auto', padding: '18px 32px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
@@ -461,9 +511,12 @@ export default function Home() {
               <p style={{ fontSize: '12px', color: 'rgba(255,255,255,0.8)', margin: 0, fontWeight: 500 }}>Free OG Image & Social Card Generator</p>
             </div>
           </div>
-          <div className="hidden sm:flex" style={{ alignItems: 'center', gap: '8px', background: 'rgba(255,255,255,0.2)', backdropFilter: 'blur(10px)', padding: '8px 16px', borderRadius: '100px', border: '1px solid rgba(255,255,255,0.25)' }}>
-            <span style={{ display: 'inline-block', width: '8px', height: '8px', borderRadius: '50%', background: '#4ade80' }}></span>
-            <span style={{ fontSize: '12px', fontWeight: 600, color: '#ffffff' }}>100% Client-side · No server processing</span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <button onClick={() => setShowWelcome(true)} style={{ width: '36px', height: '36px', borderRadius: '50%', background: 'rgba(255,255,255,0.2)', backdropFilter: 'blur(10px)', border: '1px solid rgba(255,255,255,0.25)', color: '#ffffff', fontSize: '16px', fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }} title="How to use">?</button>
+            <div className="hidden sm:flex" style={{ alignItems: 'center', gap: '8px', background: 'rgba(255,255,255,0.2)', backdropFilter: 'blur(10px)', padding: '8px 16px', borderRadius: '100px', border: '1px solid rgba(255,255,255,0.25)' }}>
+              <span style={{ display: 'inline-block', width: '8px', height: '8px', borderRadius: '50%', background: '#4ade80' }}></span>
+              <span style={{ fontSize: '12px', fontWeight: 600, color: '#ffffff' }}>100% Client-side · No server processing</span>
+            </div>
           </div>
         </div>
       </header>
@@ -473,6 +526,34 @@ export default function Home() {
         <div className="grid grid-cols-1 lg:grid-cols-12 auto-rows-min" style={{ gap: '24px' }}>
           {/* LEFT PANEL - CONTROLS (3 cols on desktop) */}
           <div className="lg:col-span-3 space-y-5 max-h-[calc(100vh-180px)] overflow-y-auto pr-2">
+            {/* Quick Guide - Collapsible */}
+            <div style={{ background: 'linear-gradient(135deg, #fef3c7, #fde68a)', borderRadius: '16px', boxShadow: '0 4px 24px rgba(0,0,0,0.08)', border: '1px solid #f59e0b', overflow: 'hidden' }}>
+              <button
+                onClick={() => setGuideExpanded(!guideExpanded)}
+                style={{ width: '100%', padding: '14px 20px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', background: 'none', border: 'none', cursor: 'pointer' }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <span style={{ fontSize: '16px' }}>💡</span>
+                  <span style={{ fontSize: '12px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.08em', color: '#92400e' }}>Quick Guide</span>
+                </div>
+                <span style={{ fontSize: '14px', color: '#92400e', transition: 'transform 0.2s', transform: guideExpanded ? 'rotate(180deg)' : 'rotate(0deg)' }}>▼</span>
+              </button>
+              {guideExpanded && (
+                <div style={{ padding: '0 20px 16px' }}>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                    {GUIDE_STEPS.map((step, i) => (
+                      <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                        <div style={{ width: '22px', height: '22px', borderRadius: '6px', background: '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '11px', flexShrink: 0, border: '1px solid #f59e0b' }}>{step.icon}</div>
+                        <span style={{ fontSize: '11px', color: '#78350f', fontWeight: 500, lineHeight: 1.3 }}>
+                          <strong>{step.title}</strong> — {step.desc}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+
             {/* Templates Section */}
             <div style={{ background: '#ffffff', borderRadius: '16px', boxShadow: '0 4px 24px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.06)', border: '1px solid #94a3b8', padding: '20px' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
