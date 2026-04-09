@@ -480,39 +480,46 @@ export default function Home() {
                 <h2 style={{ fontSize: '11px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#475569' }}>Templates</h2>
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '8px' }}>
-                {TEMPLATES.map((t) => (
-                  <button
-                    key={t.id}
-                    onClick={() => setTemplate(t)}
-                    style={{
-                      position: 'relative',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      borderRadius: '8px',
-                      overflow: 'hidden',
-                      height: '44px',
-                      border: template.id === t.id ? '2px solid #3b82f6' : '1px solid rgba(255,255,255,0.2)',
-                      outline: template.id === t.id ? '2px solid #3b82f6' : 'none',
-                      outlineOffset: '2px',
-                      cursor: 'pointer',
-                      background: t.bg.type === 'gradient'
-                        ? `linear-gradient(135deg, ${t.bg.color1}, ${t.bg.color2})`
-                        : t.bg.color1,
-                    }}
-                  >
-                    <span style={{
-                      position: 'relative',
-                      fontSize: '10px',
-                      fontWeight: 700,
-                      color: '#ffffff',
-                      textShadow: '0 1px 3px rgba(0,0,0,0.5)',
-                      lineHeight: 1.2,
-                      textAlign: 'center',
-                      padding: '2px 4px',
-                    }}>{t.name}</span>
-                  </button>
-                ))}
+                {TEMPLATES.map((t) => {
+                  const isLight = t.bg.color1 === '#ffffff' || t.bg.color1 === '#f8fafc' || t.bg.color1 === '#f1f5f9';
+                  return (
+                    <button
+                      key={t.id}
+                      onClick={() => setTemplate(t)}
+                      style={{
+                        position: 'relative',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        borderRadius: '8px',
+                        overflow: 'hidden',
+                        height: '44px',
+                        border: template.id === t.id ? '2px solid #3b82f6' : isLight ? '1px solid #cbd5e1' : '1px solid rgba(255,255,255,0.2)',
+                        outline: template.id === t.id ? '2px solid #3b82f6' : 'none',
+                        outlineOffset: '2px',
+                        cursor: 'pointer',
+                        background: t.bg.type === 'gradient'
+                          ? `linear-gradient(135deg, ${t.bg.color1}, ${t.bg.color2})`
+                          : t.bg.color1,
+                      }}
+                    >
+                      <span style={{
+                        position: 'relative',
+                        fontSize: '9px',
+                        fontWeight: 700,
+                        color: isLight ? '#334155' : '#ffffff',
+                        textShadow: isLight ? 'none' : '0 1px 3px rgba(0,0,0,0.6)',
+                        lineHeight: 1.1,
+                        textAlign: 'center',
+                        padding: '2px 3px',
+                        overflow: 'hidden',
+                        textOverflow: 'ellipsis',
+                        whiteSpace: 'nowrap',
+                        maxWidth: '100%',
+                      }}>{t.name}</span>
+                    </button>
+                  );
+                })}
               </div>
             </div>
 
@@ -914,12 +921,12 @@ export default function Home() {
           {/* CENTER PANEL - CANVAS PREVIEW (6 cols on desktop) */}
           <div className="lg:col-span-6 flex flex-col items-center justify-start">
             <div className="w-full" style={{ background: '#ffffff', borderRadius: '16px', boxShadow: '0 10px 40px rgba(0,0,0,0.15)', border: '1px solid #94a3b8', overflow: 'hidden' }}>
-              <div className="aspect-video bg-gradient-to-br from-slate-100 to-slate-200 flex items-center justify-center p-6">
+              <div className="aspect-video flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #f1f5f9, #e2e8f0)', padding: '24px' }}>
                 <canvas
                   ref={canvasRef}
                   width={1200}
                   height={630}
-                  className="w-full h-full rounded-xl shadow-xl"
+                  className="w-full h-full" style={{ borderRadius: '12px', boxShadow: '0 20px 60px rgba(0,0,0,0.15)' }}
                 />
               </div>
             </div>
@@ -1041,7 +1048,6 @@ export default function Home() {
               <div style={{ background: '#15202b', padding: '16px' }}>
                 <div style={{ border: '1px solid #38444d', borderRadius: '12px', overflow: 'hidden' }}>
                   <div style={{ background: '#1e2732', aspectRatio: '1200/630', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
-                    <canvas ref={canvasRef} width={1200} height={630} style={{ display: 'none' }} />
                     <div style={{ fontSize: '12px', color: '#8899a6', fontWeight: 500 }}>OG Image Preview</div>
                   </div>
                   <div style={{ padding: '12px', borderTop: '1px solid #38444d' }}>
