@@ -475,9 +475,9 @@ export default function Home() {
           <div className="lg:col-span-3 space-y-5 max-h-[calc(100vh-180px)] overflow-y-auto pr-2">
             {/* Templates Section */}
             <div style={{ background: '#ffffff', borderRadius: '16px', boxShadow: '0 4px 24px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.06)', border: '1px solid #94a3b8', padding: '20px' }}>
-              <div className="flex items-center gap-2 mb-4">
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
                 <div style={{ width: '4px', height: '20px', borderRadius: '4px', background: 'linear-gradient(to bottom, #f97316, #ec4899)' }}></div>
-                <h2 style={{ fontSize: '11px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#475569' }}>Templates</h2>
+                <h2 style={{ fontSize: '11px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#475569', margin: 0 }}>Templates</h2>
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '8px' }}>
                 {TEMPLATES.map((t) => {
@@ -525,7 +525,7 @@ export default function Home() {
 
             {/* Text Section */}
             <div style={{ background: '#ffffff', borderRadius: '16px', boxShadow: '0 4px 24px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.06)', border: '1px solid #94a3b8', padding: '20px' }}>
-              <div className="flex items-center gap-2 mb-4">
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
                 <div style={{ width: '4px', height: '20px', borderRadius: '4px', background: 'linear-gradient(to bottom, #3b82f6, #8b5cf6)' }}></div>
                 <h2 style={{ fontSize: '11px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#475569' }}>Text</h2>
               </div>
@@ -657,7 +657,7 @@ export default function Home() {
 
             {/* Background Section */}
             <div style={{ background: '#ffffff', borderRadius: '16px', boxShadow: '0 4px 24px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.06)', border: '1px solid #94a3b8', padding: '20px' }}>
-              <div className="flex items-center gap-2 mb-4">
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
                 <div style={{ width: '4px', height: '20px', borderRadius: '4px', background: 'linear-gradient(to bottom, #8b5cf6, #ec4899)' }}></div>
                 <h2 style={{ fontSize: '11px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#475569' }}>Background</h2>
               </div>
@@ -849,7 +849,7 @@ export default function Home() {
 
             {/* Logo Section */}
             <div style={{ background: '#ffffff', borderRadius: '16px', boxShadow: '0 4px 24px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.06)', border: '1px solid #94a3b8', padding: '20px' }}>
-              <div className="flex items-center gap-2 mb-4">
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
                 <div style={{ width: '4px', height: '20px', borderRadius: '4px', background: 'linear-gradient(to bottom, #6366f1, #3b82f6)' }}></div>
                 <h2 style={{ fontSize: '11px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#475569' }}>Logo</h2>
               </div>
@@ -1002,7 +1002,7 @@ export default function Home() {
           {/* RIGHT PANEL - SOCIAL PREVIEWS (3 cols on desktop) */}
           <div className="lg:col-span-3 space-y-5 max-h-[calc(100vh-180px)] overflow-y-auto pl-2">
             <div style={{ background: '#ffffff', borderRadius: '16px', boxShadow: '0 4px 24px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.06)', border: '1px solid #94a3b8', padding: '20px' }}>
-              <div className="flex items-center gap-2 mb-4">
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
                 <div style={{ width: '4px', height: '20px', borderRadius: '4px', background: 'linear-gradient(to bottom, #22c55e, #10b981)' }}></div>
                 <h2 style={{ fontSize: '11px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#475569' }}>Page Info</h2>
               </div>
@@ -1080,7 +1080,7 @@ export default function Home() {
 
             {showMetaTags && (
               <div style={{ background: '#ffffff', borderRadius: '16px', boxShadow: '0 4px 24px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.06)', border: '1px solid #94a3b8', padding: '20px' }}>
-                <div className="flex items-center gap-2 mb-4">
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
                   <div style={{ width: '4px', height: '20px', borderRadius: '4px', background: 'linear-gradient(to bottom, #64748b, #334155)' }}></div>
                   <h2 style={{ fontSize: '11px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#475569' }}>Meta Tags Code</h2>
                 </div>
